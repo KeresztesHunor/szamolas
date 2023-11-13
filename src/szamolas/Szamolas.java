@@ -1,5 +1,7 @@
 package szamolas;
 
+import javax.swing.JCheckBox;
+
 public class Szamolas extends javax.swing.JFrame {
     
     private int osszeg;
@@ -128,23 +130,23 @@ public class Szamolas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void chbSajtItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chbSajtItemStateChanged
-        osszegKiszamol(200);
+        osszegKiszamol(chbSajt, 200);
         osszegKiir();
     }//GEN-LAST:event_chbSajtItemStateChanged
 
     private void chbHagymaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chbHagymaItemStateChanged
-        osszegKiszamol(200);
+        osszegKiszamol(chbHagyma, 200);
         osszegKiir();
     }//GEN-LAST:event_chbHagymaItemStateChanged
 
     private void chbAnanaszItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chbAnanaszItemStateChanged
-        osszegKiszamol(200);
+        osszegKiszamol(chbAnanasz, 200);
         osszegKiir();
     }//GEN-LAST:event_chbAnanaszItemStateChanged
 
-    private void osszegKiszamol(int ar)
+    private void osszegKiszamol(JCheckBox checkbox, int ar)
     {
-        if(chbAnanasz.isSelected())
+        if(checkbox.isSelected())
         {
             osszeg += ar;
         }
