@@ -4,13 +4,11 @@ public class Szamolas extends javax.swing.JFrame {
     
     private int osszeg;
     
-    public Szamolas() {
+    public Szamolas()
+    {
         initComponents();
-        
         osszeg = 0;
-        
-        String s = "Fizetendő: %d Ft".formatted(osszeg);
-        lblOsszeg.setText(s);
+        osszegKiir();
     }
 
     @SuppressWarnings("unchecked")
@@ -130,42 +128,40 @@ public class Szamolas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void chbSajtItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chbSajtItemStateChanged
-        int ar = 200;
-        if(chbSajt.isSelected()){
-            osszeg += ar;
-        }else{
-            osszeg -= ar;
-        }
-        
-        String s = "Fizetendő: %d Ft".formatted(osszeg);
-        lblOsszeg.setText(s);
+        osszegKiszamol(200);
+        osszegKiir();
     }//GEN-LAST:event_chbSajtItemStateChanged
 
     private void chbHagymaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chbHagymaItemStateChanged
-        int ar = 200;
-        if(chbHagyma.isSelected()){
-            osszeg += ar;
-        }else{
-            osszeg -= ar;
-        }
-        
-        String s = "Fizetendő: %d Ft".formatted(osszeg);
-        lblOsszeg.setText(s);
+        osszegKiszamol(200);
+        osszegKiir();
     }//GEN-LAST:event_chbHagymaItemStateChanged
 
     private void chbAnanaszItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chbAnanaszItemStateChanged
-        int ar = 200;
-        if(chbAnanasz.isSelected()){
-            osszeg += ar;
-        }else{
-            osszeg -= ar;
-        }
-        
-        String s = "Fizetendő: %d Ft".formatted(osszeg);
-        lblOsszeg.setText(s);
+        osszegKiszamol(200);
+        osszegKiir();
     }//GEN-LAST:event_chbAnanaszItemStateChanged
 
-    public static void main(String args[]) {
+    private void osszegKiszamol(int ar)
+    {
+        if(chbAnanasz.isSelected())
+        {
+            osszeg += ar;
+        }
+        else
+        {
+            osszeg -= ar;
+        }
+    }
+    
+    private void osszegKiir()
+    {
+        String s = "Fizetendő: %d Ft".formatted(osszeg);
+        lblOsszeg.setText(s);
+    }
+    
+    public static void main(String args[])
+    {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -190,8 +186,10 @@ public class Szamolas extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+        java.awt.EventQueue.invokeLater(new Runnable()
+        {
+            public void run()
+            {
                 new Szamolas().setVisible(true);
             }
         });
