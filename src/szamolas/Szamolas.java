@@ -33,21 +33,21 @@ public class Szamolas extends javax.swing.JFrame {
         chbHagyma.setText("hagyma");
         chbHagyma.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                chbHagymaItemStateChanged(evt);
+                toppingCHBItemStateChanged(evt);
             }
         });
 
         chbAnanasz.setText("ananász");
         chbAnanasz.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                chbAnanaszItemStateChanged(evt);
+                toppingCHBItemStateChanged(evt);
             }
         });
 
         chbSajt.setText("sajt");
         chbSajt.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                chbSajtItemStateChanged(evt);
+                toppingCHBItemStateChanged(evt);
             }
         });
 
@@ -129,37 +129,19 @@ public class Szamolas extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void chbSajtItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chbSajtItemStateChanged
-        osszegKiszamol(chbSajt, 200);
+    private void toppingCHBItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_toppingCHBItemStateChanged
+        osszegKiszamol(evt, 200);
         osszegKiir();
-    }//GEN-LAST:event_chbSajtItemStateChanged
+    }//GEN-LAST:event_toppingCHBItemStateChanged
 
-    private void chbHagymaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chbHagymaItemStateChanged
-        osszegKiszamol(chbHagyma, 200);
-        osszegKiir();
-    }//GEN-LAST:event_chbHagymaItemStateChanged
-
-    private void chbAnanaszItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chbAnanaszItemStateChanged
-        osszegKiszamol(chbAnanasz, 200);
-        osszegKiir();
-    }//GEN-LAST:event_chbAnanaszItemStateChanged
-
-    private void osszegKiszamol(JCheckBox checkbox, int ar)
+    private void osszegKiszamol(java.awt.event.ItemEvent evt, int ar)
     {
-        if(checkbox.isSelected())
-        {
-            osszeg += ar;
-        }
-        else
-        {
-            osszeg -= ar;
-        }
+        osszeg += ((JCheckBox)evt.getSource()).isSelected() ? ar : -ar;
     }
     
     private void osszegKiir()
     {
-        String s = "Fizetendő: %d Ft".formatted(osszeg);
-        lblOsszeg.setText(s);
+        lblOsszeg.setText("Fizetendő: %d Ft".formatted(osszeg));
     }
     
     public static void main(String args[])
